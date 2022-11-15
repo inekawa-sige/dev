@@ -13,8 +13,8 @@ services:
       - 1.1.1.1
       - 8.8.8.8
       - 9.9.9.9
-    expose:
-      - "8118/tcp"
+    ports:
+      - 8118:8118
     environment:
       - VPN_USER: dummy # 発行されたユーザIDを指定する
       - VPN_PASS: dummy # 発行されたユーザパスワードを指定する
