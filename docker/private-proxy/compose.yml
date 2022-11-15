@@ -1,0 +1,28 @@
+version: "3.9"
+
+services:
+  private-proxy:
+    container_name: private-proxy
+    hostname: private-proxy
+    tty: true
+    cap_add:
+      - NET_ADMIN
+    devices:
+      - /dev/net/tun
+    dns:
+      - 1.1.1.1
+      - 8.8.8.8
+      - 9.9.9.9
+    expose:
+      - "8118/tcp"
+    environment:
+      - VPN_USER: dummy # 発行されたユーザIDを指定する
+      - VPN_PASS: dummy # 発行されたユーザパスワードを指定する
+    networks:
+      - private-network
+
+networks:
+  private-network:
+    name: private-network
+
+
